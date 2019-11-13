@@ -269,7 +269,7 @@ function onSettingsConfirm() {
 	preferences.timeStep = parseFloat($('#robotTimeStep').val());
 	preferences.wheelbaseWidth = parseFloat($('#robotWidth').val());
 	preferences.robotLength = parseFloat($('#robotLength').val());
-	preferences.teamNumber = parseFloat($('#teamNumber').val());
+	preferences.teamNumber = String($('#teamNumber').val());
 	preferences.rioPathLocation = $('#rioPathLocation').val();
 	preferences.useMetric = $('#units').val();
 	const gameYear = $('#gameYear').value;

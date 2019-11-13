@@ -16,7 +16,7 @@ class Preferences {
 		this.p_outputFormat = store.get('outputFormat', 'p,v,a,h');
 		this.p_lastGenerateDir = store.get('lastGenerateDir', 'none');
 		this.p_lastPathDir = store.get('lastPathDir', 'none');
-		this.p_teamNumber = store.get('teamNumber', 0);
+		this.p_teamNumber = store.get('teamNumber', '6854');
 		this.p_rioPathLocation = store.get('deployLocation', '/home/lvuser/paths');
 		this.p_useMetric = store.get('useMetric', 'metric');
 		this.maxVel = (this.p_useMetric) ? 2.5 : 8.0;
@@ -60,7 +60,7 @@ class Preferences {
 	}
 
 	get teamNumber() {
-		return this.p_teamNumber;
+		return String(this.p_teamNumber);
 	}
 
 	get rioPathLocation() {
@@ -119,8 +119,8 @@ class Preferences {
 	}
 
 	set teamNumber(value) {
-		store.set('teamNumber', value);
-		this.p_teamNumber = value;
+		store.set('teamNumber', String(value));
+		this.p_teamNumber = String(value);
 	}
 
 	set rioPathLocation(value) {

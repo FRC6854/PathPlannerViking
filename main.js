@@ -94,10 +94,11 @@ ipc.on('generate', function (event, data) {
 ipc.on('deploy-segments', function (event, data) {
 	log.info('Connecting to robot...');
 	win.webContents.send('connecting');
-	var numbers = data.team.split('');
+	var numbers = String(data.team).split('');
+	var host = '10.' + numbers[0] + numbers[1] + '.' + numbers[2] + numbers[3] + '.2';
 	// Connect to the robot
 	sftp.connect({
-		host: '10.' + numbers[0] + numbers[1] + '.' + numbers[2] + numbers[3] + '.2',
+		host: host,
 		username: 'lvuser',
 		readyTimeout: 5000
 	}).then(() => {
