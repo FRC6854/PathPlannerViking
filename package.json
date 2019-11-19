@@ -17,7 +17,7 @@
     "build-linux-snap": "build --linux snap"
   },
   "build": {
-    "appId": "org.rangerrobotics.pathplanner",
+    "appId": "org.vikingrobotics.pathplanner",
     "productName": "PathPlanner",
     "artifactName": "pathplanner-${os}.${ext}",
     "fileAssociations": {
@@ -44,13 +44,13 @@
       "!test${/*}"
     ]
   },
-  "repository": "https://github.com/mjansen4857/PathPlanner.git",
-  "author": "Michael Jansen",
+  "repository": "https://github.com/FRC6854/PathPlannerViking.git",
+  "author": "Collin",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mjansen4857/PathPlanner/issues"
+    "url": "https://github.com/FRC6854/PathPlannerViking/issues"
   },
-  "homepage": "https://github.com/mjansen4857/PathPlanner#readme",
+  "homepage": "https://github.com/FRC6854/PathPlannerViking#readme",
   "devDependencies": {
     "electron": "^5.0.5",
     "electron-builder": "^20.44.4",

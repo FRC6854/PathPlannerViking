@@ -539,7 +539,7 @@ function saveHistory() {
  * Open the github repo in the browser
  */
 function openRepo() {
-	shell.openExternal('https://github.com/mjansen4857/PathPlanner/releases/latest');
+	shell.openExternal('https://github.com/FRC6854/PathPlannerViking/releases/latest');
 }
 
 /**

@@ -94,8 +94,13 @@ ipc.on('generate', function (event, data) {
 ipc.on('deploy-segments', function (event, data) {
 	log.info('Connecting to robot...');
 	win.webContents.send('connecting');
+
+	// Use the static ip for the robot with an array of the numbers of the team
 	var numbers = String(data.team).split('');
 	var host = '10.' + numbers[0] + numbers[1] + '.' + numbers[2] + numbers[3] + '.2';
+
+	process.stdout.write(data.path + '/'  + data.name + '/' + 'path_left.csv');
+
 	// Connect to the robot
 	sftp.connect({
 		host: host,
@@ -107,9 +112,9 @@ ipc.on('deploy-segments', function (event, data) {
 		// Helper function to upload both path files
 		let upload = function () {
 			if (preferences.splitPath) {
-				sftp.put(Buffer.from(data.left), data.path + '/' + data.name + '_left.csv').then((response) => {
+				sftp.put(Buffer.from(data.left), data.path + '/'  + data.name + '/' + 'path_left.csv').then((response) => {
 					log.info(response);
-					sftp.put(Buffer.from(data.right), data.path + '/' + data.name + '_right.csv').then((response) => {
+					sftp.put(Buffer.from(data.right), data.path + '/'  + data.name + '/' + 'path_right.csv').then((response) => {
 						log.info(response);
 					}).then(() => {
 						win.webContents.send('uploaded', data.name);
