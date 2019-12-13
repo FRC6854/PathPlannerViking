@@ -9,11 +9,11 @@ const store = new Store({name: 'settings', cwd: home + '/.PathPlanner'});
 class Preferences {
 	constructor() {
 		// this.p_mu = store.get('mu', 0.77);
-		this.p_wheelbaseWidth = store.get('wheelbaseWidth', 2.0);
-		this.p_robotLength = store.get('robotLength', 3.0);
+		this.p_wheelbaseWidth = store.get('wheelbaseWidth', 0.6);
+		this.p_robotLength = store.get('robotLength', 0.8);
 		this.p_timeStep = store.get('timeStep', 0.01);
 		this.p_outputType = store.get('outputType', 0);
-		this.p_outputFormat = store.get('outputFormat', 'p,v,a,h');
+		this.p_outputFormat = store.get('outputFormat', 'p,v,s');
 		this.p_lastGenerateDir = store.get('lastGenerateDir', 'none');
 		this.p_lastPathDir = store.get('lastPathDir', 'none');
 		this.p_teamNumber = store.get('teamNumber', '6854');
@@ -24,7 +24,7 @@ class Preferences {
 		this.p_gameYear = store.get('gameYear', '19');
 		this.p_splitPath = store.get('splitPath', true);
 		this.endVelOverride = false;
-		this.currentPathName = "path";
+		this.currentPathName = "testing";
 	}
 
 	get lastRunVersion() {
