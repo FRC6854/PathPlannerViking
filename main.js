@@ -72,7 +72,7 @@ app.on('activate', () => {
 
 // Notify the renderer when downloading an update
 autoUpdater.on('update-available', (info) => {
-	win.webContents.send('downloading-update', info.version);
+	win.webContents.send('downloading-update', );
 });
 
 // Notify the renderer that an update is ready
