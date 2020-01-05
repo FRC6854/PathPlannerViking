@@ -129,6 +129,12 @@ $(document).ready(function () {
 	$('#settingsConfirm').click(() => {
 		onSettingsConfirm();
 	});
+
+	// Set the listeners for the confirm buttons
+	$('#clearCache').click(() => {
+		onClearCache();
+	});
+
 	$('#pointConfigConfirm').click(() => {
 		pathEditor.pointConfigOnConfirm();
 		saveHistory();
@@ -276,6 +282,10 @@ $(document).ready(function () {
 		$('#windowSettings, #windowMin, #windowClose, #actionsBtn, #savePathBtn, #openPathBtn, #generatePathBtn, #previewPathBtn').addClass('wiggle');
 	}
 });
+
+function onClearCache() {
+	preferences.clearStore();
+}
 
 /**
  * Update preferences when the settings are changed

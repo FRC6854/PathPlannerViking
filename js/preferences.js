@@ -142,6 +142,10 @@ class Preferences {
 		store.set('splitPath', value);
 		this.p_splitPath = value;
 	}
+
+	clearStore() {
+		store.clear();
+	}
 }
 
 module.exports.Preferences = Preferences;
