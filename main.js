@@ -17,6 +17,7 @@ unhandled({logger: log.error, showDialog: true});
 const is = require('electron-is');
 let macFile;
 let win;
+let shouldQuit = false;
 
 /**
  * Create the main window
@@ -35,6 +36,13 @@ function createWindow() {
 	win.setMenu(null);
 	// win.webContents.openDevTools();
 	win.loadFile('pathplanner.html');
+
+	win.on('close', (e) => {
+		if(!shouldQuit) {
+			e.preventDefault();
+			win.webContents.send('close-requested');
+		}
+	});
 
 	win.on('closed', () => {
 		win = null;
@@ -72,6 +80,11 @@ autoUpdater.on('update-downloaded', (info) => {
 	win.webContents.send('update-ready');
 });
 
+ipc.on('quit', (event, data) => {
+	shouldQuit = true;
+	app.quit();
+});
+
 // Update the app when the user clicks the restart button
 ipc.on('quit-and-install', (event, data) => {
 	autoUpdater.quitAndInstall();
@@ -80,7 +93,7 @@ ipc.on('quit-and-install', (event, data) => {
 // Create a hidden window to generate the path to avoid delaying the main window
 ipc.on('generate', function (event, data) {
 	log.info('Starting generation worker...');
-	var worker = new BrowserWindow({
+	let worker = new BrowserWindow({
 		show: false,
 		webPreferences: {
 			nodeIntegration: true

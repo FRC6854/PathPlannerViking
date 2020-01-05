@@ -11,20 +11,20 @@ class Preferences {
 		// this.p_mu = store.get('mu', 0.77);
 		this.p_wheelbaseWidth = store.get('wheelbaseWidth', 0.6);
 		this.p_robotLength = store.get('robotLength', 0.8);
-		this.p_timeStep = store.get('timeStep', 0.01);
+		this.p_timeStep = store.get('timeStep', 0.05);
 		this.p_outputType = store.get('outputType', 0);
 		this.p_outputFormat = store.get('outputFormat', 'p,v,s');
 		this.p_lastGenerateDir = store.get('lastGenerateDir', 'none');
 		this.p_lastPathDir = store.get('lastPathDir', 'none');
-		this.p_teamNumber = store.get('teamNumber', '6854');
+		this.p_teamNumber = store.get('teamNumber', 6854);
 		this.p_rioPathLocation = store.get('deployLocation', '/home/lvuser/paths');
-		this.p_useMetric = store.get('useMetric', 'metric');
+		this.p_useMetric = store.get('useMetric', true);
 		this.maxVel = (this.p_useMetric) ? 2.5 : 8.0;
 		this.maxAcc = (this.p_useMetric) ? 1.5 : 5.0;
 		this.p_gameYear = store.get('gameYear', '19');
 		this.p_splitPath = store.get('splitPath', true);
-		this.endVelOverride = false;
-		this.currentPathName = "testing";
+		this.currentPathName = "path";
+		this.csvHeader = null;
 	}
 
 	get lastRunVersion() {
@@ -60,7 +60,7 @@ class Preferences {
 	}
 
 	get teamNumber() {
-		return String(this.p_teamNumber);
+		return this.p_teamNumber;
 	}
 
 	get rioPathLocation() {
@@ -119,8 +119,8 @@ class Preferences {
 	}
 
 	set teamNumber(value) {
-		store.set('teamNumber', String(value));
-		this.p_teamNumber = String(value);
+		store.set('teamNumber', value);
+		this.p_teamNumber = value;
 	}
 
 	set rioPathLocation(value) {
