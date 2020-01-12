@@ -144,7 +144,7 @@ ipc.on('deploy-segments', function (event, data) {
 			}
 		};
 		// Make the destination folder and upload files if it doesn't exist, otherwise just upload files
-		sftp.mkdir(data.path, true).then(() => {
+		sftp.mkdir(data.path + '/' + data.name, true).then(() => {
 			upload();
 		}).catch(() => {
 			upload();
