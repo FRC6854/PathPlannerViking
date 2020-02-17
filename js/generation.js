@@ -38,7 +38,8 @@ class RobotPath {
         this.noLogging = noLogging;
         if(!this.noLogging) log.info('Generating path...');
         const start = new Date().getTime();
-        this.path = new Path(join(points, joinStep, noLogging), points[0], preferences.p_useMetric ? Util.pixelsPerMeter : Util.pixelsPerFoot, noLogging);
+        this.xPixelOffset = (preferences.p_gameYear === '20') ? Util.xOffset20 : Util.xOffsetNormal;
+        this.path = new Path(join(points, joinStep, noLogging), points[0], preferences.p_useMetric ? Util.pixelsPerMeter : Util.pixelsPerFoot, noLogging, this.xPixelOffset);
         this.velocities = velocities;
         this.pathSegments = this.path.group;
         this.timeSegments = new SegmentGroup();
@@ -335,6 +336,8 @@ class RobotPath {
             left.dt = seg.dt;
             left.time = seg.time;
             left.radius = seg.radius;
+            left.angularVelocity = seg.angularVelocity;
+            left.angularAccel = seg.angularAccel;
 
             if (i > 0) {
                 const last = this.left.segments[i - 1];
@@ -357,6 +360,8 @@ class RobotPath {
             right.dt = seg.dt;
             right.time = seg.time;
             right.radius = seg.radius;
+            right.angularVelocity = seg.angularVelocity;
+            right.angularAccel = seg.angularAccel;
 
             if (i > 0) {
                 const last = this.right.segments[i - 1];
@@ -385,6 +390,8 @@ class RobotPath {
             const dt = now.time - last.time;
             now.vel = (now.pos - last.pos) / dt;
             now.acc = (now.vel - last.vel) / dt;
+            now.angularVelocity = now.vel / now.radius;
+            now.angularAccel = (now.angularVelocity - last.angularVelocity) / dt;
         }
         if(!this.noLogging) log.info('        DONE IN: ' + (new Date().getTime() - start) + 'ms');
     }
@@ -400,7 +407,7 @@ class RobotPath {
 }
 
 class Path {
-    constructor(s, p0, pixelsPerUnit, noLogging) {
+    constructor(s, p0, pixelsPerUnit, noLogging, xPixelOffset) {
         this.noLogging = noLogging;
         this.length = 0.0;
         this.p0 = p0;
@@ -410,6 +417,7 @@ class Path {
         this.inGroup = s;
         this.group = new SegmentGroup();
         this.pixelsPerUnit = pixelsPerUnit;
+        this.xPixelOffset = xPixelOffset;
         this.makePath();
     }
 
@@ -467,7 +475,7 @@ class Path {
             const s2 = i + 1;
             let seg = new Segment();
             seg.x = this.x[s];
-            seg.fieldX = ((this.p0.x - Util.xPixelOffset) / this.pixelsPerUnit) + seg.x;
+            seg.fieldX = ((this.p0.x - this.xPixelOffset) / this.pixelsPerUnit) + seg.x;
             seg.y = this.y[s];
             seg.fieldY = ((this.p0.y - Util.yPixelOffset) / this.pixelsPerUnit) + seg.y;
             seg.pos = this.l[s];

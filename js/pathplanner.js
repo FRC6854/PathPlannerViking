@@ -14,10 +14,10 @@ const {PathEditor} = require('./js/path_editor.js');
 const showdown = require('showdown');
 const semver = require('semver');
 const github = require('octonode').client();
-const repo = github.repo('FRC6854/PathPlannerViking');
+const repo = github.repo('FRC6854/VikingPathPlanner');
 const SimpleUndo = require('simple-undo');
 let history;
-const outputFormatRegX = /^[xyXYpvahHtSsWwr123456](?:,[xyXYpvahHtSsWwr123456])*$/g;
+const outputFormatRegX = /^[xyXYpvahHtSsWwroO123456](?:,[xyXYpvahHtSsWwroO123456])*$/g;
 let unsavedChanges = false;
 
 let pathEditor;
@@ -63,8 +63,7 @@ $(document).ready(function () {
 	field.onload = () => {
 		if(preferences.gameYear == 20){
 			Util.xPixelOffset = Util.xOffset20;
-		}
-		else{
+		}else{
 			Util.xPixelOffset = Util.xOffsetNormal;
 		}
 		pathEditor = new PathEditor(field, saveHistory);
@@ -135,12 +134,6 @@ $(document).ready(function () {
 	$('#settingsConfirm').click(() => {
 		onSettingsConfirm();
 	});
-
-	// Set the listeners for the confirm buttons
-	$('#clearCache').click(() => {
-		onClearCache();
-	});
-
 	$('#pointConfigConfirm').click(() => {
 		pathEditor.pointConfigOnConfirm();
 		saveHistory();
@@ -289,10 +282,6 @@ $(document).ready(function () {
 	}
 });
 
-function onClearCache() {
-	preferences.clearStore();
-}
-
 /**
  * Update preferences when the settings are changed
  */
@@ -308,22 +297,17 @@ function onSettingsConfirm() {
 	preferences.robotLength = parseFloat($('#robotLength').val());
 	preferences.teamNumber = parseFloat($('#teamNumber').val());
 	preferences.rioPathLocation = $('#rioPathLocation').val();
-	if ($('#units').val() == 'metric') {
-		preferences.useMetric = true;
-	}
-	else {
-		preferences.useMetric = false;
-	}
+	preferences.useMetric = $('#units').value === 'metric';
 	const gameYear = $('#gameYear').val();
 	if (preferences.gameYear !== gameYear) {
 		let field = new Image();
 		field.onload = () => {
 			if(preferences.gameYear == 20){
 				Util.xPixelOffset = Util.xOffset20;
-			}
-			else{
+			}else{
 				Util.xPixelOffset = Util.xOffsetNormal;
 			}
+
 			pathEditor.updateImage(field);
 			pathEditor.update();
 		};
@@ -596,7 +580,7 @@ function saveHistory() {
  * Open the github repo in the browser
  */
 function openRepo() {
-	shell.openExternal('https://github.com/FRC6854/PathPlannerViking/releases/latest');
+	shell.openExternal('https://github.com/FRC6854/VikingPathPlanner/releases/latest');
 }
 
 /**

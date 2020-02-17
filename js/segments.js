@@ -55,12 +55,12 @@ class SegmentGroup {
         ret = ret.replace(/y/g, (Math.round(s.y * 10000) / 10000 * n).toString());
         ret = ret.replace(/X/g, (Math.round(s.fieldX * 10000) / 10000).toString());
         ret = ret.replace(/Y/g, (Math.round(s.fieldY * 10000) / 10000).toString());
-        ret = ret.replace(/pl/g, (Math.round(l.pos * 10000) / 10000 * n).toString());
-        ret = ret.replace(/pr/g, (Math.round(r.pos * 10000) / 10000 * n).toString());
-        ret = ret.replace(/vl/g, (Math.round(l.vel * 10000) / 10000 * n).toString());
-        ret = ret.replace(/vr/g, (Math.round(r.vel * 10000) / 10000 * n).toString());
-        ret = ret.replace(/al/g, (Math.round(l.acc * 10000) / 10000 * n).toString());
-        ret = ret.replace(/ar/g, (Math.round(r.acc * 10000) / 10000 * n).toString());
+        ret = ret.replace(/pl/g, (Math.round((reverse ? r.pos : l.pos) * 10000) / 10000 * n).toString());
+        ret = ret.replace(/pr/g, (Math.round((reverse ? l.pos : r.pos) * 10000) / 10000 * n).toString());
+        ret = ret.replace(/vl/g, (Math.round((reverse ? r.vel : l.vel) * 10000) / 10000 * n).toString());
+        ret = ret.replace(/vr/g, (Math.round((reverse ? l.vel : r.vel) * 10000) / 10000 * n).toString());
+        ret = ret.replace(/al/g, (Math.round((reverse ? r.acc : l.acc) * 10000) / 10000 * n).toString());
+        ret = ret.replace(/ar/g, (Math.round((reverse ? l.acc : r.acc) * 10000) / 10000 * n).toString());
         ret = ret.replace(/p/g, (Math.round(s.pos * 10000) / 10000 * n).toString());
         ret = ret.replace(/v/g, (Math.round(s.vel * 10000) / 10000 * n).toString());
         ret = ret.replace(/a/g, (Math.round(s.acc * 10000) / 10000 * n).toString());
@@ -81,6 +81,8 @@ class SegmentGroup {
         ret = ret.replace(/W/g, (Math.round(s.relativeWinding * 10000) / 10000).toString());
         ret = ret.replace(/w/g, (Math.round(s.winding * 10000) / 10000).toString());
         ret = ret.replace(/r/g, (Math.round(s.radius * 10000) / 10000).toString());
+        ret = ret.replace(/o/g, (Math.round(s.angularVelocity * 10000) / 10000).toString());
+        ret = ret.replace(/O/g, (Math.round(s.angularAccel * 10000) / 10000).toString());
         return ret;
     }
 
@@ -108,6 +110,8 @@ class Segment {
         this.dt = 0.0;
         this.time = 0;
         this.dx = 0.0;
+        this.angularVelocity = 0.0;
+        this.angularAccel = 0.0;
     }
 }
 
