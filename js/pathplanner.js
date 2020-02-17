@@ -14,7 +14,7 @@ const {PathEditor} = require('./js/path_editor.js');
 const showdown = require('showdown');
 const semver = require('semver');
 const github = require('octonode').client();
-const repo = github.repo('FRC6854/VikingPathPlanner');
+const repo = github.repo('FRC6854/PathPlannerViking');
 const SimpleUndo = require('simple-undo');
 let history;
 const outputFormatRegX = /^[xyXYpvahHtSsWwroO123456](?:,[xyXYpvahHtSsWwroO123456])*$/g;
@@ -580,7 +580,7 @@ function saveHistory() {
  * Open the github repo in the browser
  */
 function openRepo() {
-	shell.openExternal('https://github.com/FRC6854/VikingPathPlanner/releases/latest');
+	shell.openExternal('https://github.com/FRC6854/PathPlannerViking/releases/latest');
 }
 
 /**
