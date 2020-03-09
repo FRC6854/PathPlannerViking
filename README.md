@@ -4,6 +4,8 @@
 
 Inspiration came from [Vannaka's Generator](https://github.com/vannaka/Motion_Profile_Generator) which uses [Jaci's PathFinder](https://github.com/JacisNonsense/Pathfinder). The app is compatible with Windows, Mac OS, and Linux. It is also available on the Microsoft Store and Snapcraft Store.
 
+![Path Editor](https://i.imgur.com/7sJ1jsx.png)
+
 ## Working With Paths
 <img align="right" width="400" src="https://i.imgur.com/mxX5ac0.png" alt="Point Configuration" />
 
