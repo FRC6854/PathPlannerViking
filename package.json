@@ -68,6 +68,7 @@
     "semver": "^6.1.1",
     "showdown": "^1.9.0",
     "simple-undo": "^1.0.2",
-    "ssh2-sftp-client": "^2.5.0"
+    "ssh2-sftp-client": "^2.5.0",
+    "minimist": ">=1.2.2"
   }
 }
