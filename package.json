@@ -54,16 +54,16 @@
   "devDependencies": {
     "electron": "^5.0.13",
     "electron-builder": "^20.44.4",
-    "jest": "^25.2.7"
+    "jest": "^25.5.4"
   },
   "dependencies": {
     "electron-is": "^3.0.0",
     "electron-log": "^3.0.6",
     "electron-store": "^3.3.0",
     "electron-unhandled": "^2.2.0",
-    "electron-updater": "^4.2.5",
+    "electron-updater": "^4.3.1",
     "hotkeys-js": "^3.7.6",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.1",
     "minimist": "^1.2.5",
     "octonode": "^0.9.5",
     "semver": "^6.1.1",
