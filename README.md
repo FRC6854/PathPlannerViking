@@ -1,6 +1,8 @@
-# PathPlanner
+# PathPlannerViking
 
 [![Build Status](https://vikingrobotics.visualstudio.com/VIKING/_apis/build/status/FRC6854.PathPlannerViking?branchName=master)](https://vikingrobotics.visualstudio.com/VIKING/_build/latest?definitionId=2&branchName=master)
+
+### Fork of [PathPlanner](https://github.com/mjansen4857/PathPlanner) (messed up the forking process)
 
 Inspiration came from [Vannaka's Generator](https://github.com/vannaka/Motion_Profile_Generator) which uses [Jaci's PathFinder](https://github.com/JacisNonsense/Pathfinder). The app is compatible with Windows, Mac OS, and Linux. It is also available on the Microsoft Store and Snapcraft Store.
 
