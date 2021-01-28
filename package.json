@@ -52,7 +52,7 @@
   },
   "homepage": "https://github.com/FRC6854/PathPlannerViking#readme",
   "devDependencies": {
-    "electron": "^7.2.4",
+    "electron": "^9.4.0",
     "electron-builder": "^20.44.4",
     "jest": "^25.5.4"
   },
