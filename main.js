@@ -1,4 +1,4 @@
-const {app, BrowserWindow} = require('electron');
+const {app, BrowserWindow, nativeImage} = require('electron');
 const ipc = require('electron').ipcMain;
 const log = require('electron-log');
 const homeDir = require('os').homedir();
@@ -26,7 +26,7 @@ function createWindow() {
 	win = new BrowserWindow({
 		width: 1200,
 		height: 745,
-		icon: 'build/icon.png',
+		icon: nativeImage.createFromPath('build/icon.png'),
 		frame: false,
 		resizable: false,
 		webPreferences: {
