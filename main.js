@@ -1,4 +1,4 @@
-const {app, BrowserWindow, nativeImage} = require('electron');
+const {app, BrowserWindow} = require('electron');
 const ipc = require('electron').ipcMain;
 const log = require('electron-log');
 const homeDir = require('os').homedir();
@@ -26,7 +26,7 @@ function createWindow() {
 	win = new BrowserWindow({
 		width: 1200,
 		height: 745,
-		icon: nativeImage.createFromPath('build/icon.png'),
+		icon: 'build/icon.png',
 		frame: false,
 		resizable: false,
 		webPreferences: {
@@ -72,7 +72,7 @@ app.on('activate', () => {
 
 // Notify the renderer when downloading an update
 autoUpdater.on('update-available', (info) => {
-	win.webContents.send('downloading-update', );
+	win.webContents.send('downloading-update', info.version);
 });
 
 // Notify the renderer that an update is ready

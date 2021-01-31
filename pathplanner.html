@@ -3,12 +3,12 @@
 <head>
 	<meta charset="UTF-8">
 	<title>PathPlanner</title>
-	<link rel="stylesheet" href="./res/materialize/css/materialize.min.css">
+	<link rel="stylesheet" href="res/materialize/css/materialize.min.css">
 	<script>
 		window.$ = window.jQuery = require('jquery');
 	</script>
-	<script src="./res/materialize/js/materialize.min.js"></script>
-	<script src="./js/pathplanner.js"></script>
+	<script src="res/materialize/js/materialize.min.js"></script>
+	<script src="js/pathplanner.js"></script>
 	<link rel="stylesheet" href="./pathplanner.css">
 </head>
 
@@ -63,8 +63,8 @@
 					<div class="row">
 						<div class="col s6 input-field">
 							<select id="units">
-								<option value="imperial">Imperial</option>
-								<option value="metric" selected>Metric</option>
+								<option value="imperial" selected>Imperial</option>
+								<option value="metric">Metric</option>
 							</select>
 							<label for="units">Units</label>
 						</div>
@@ -72,7 +72,8 @@
 							<select id="gameYear">
 								<option value="18">2018 - Power Up</option>
 								<option value="19">2019 - Deep Space</option>
-								<option value="20" selected>2020 - Infinite Recharge</option>
+								<option value="20">2020 - Infinite Recharge</option>
+								<option value="21" selected>2021 - Recharge @ Home</option>
 							</select>
 							<label for="gameYear">Game Year</label>
 						</div>
@@ -103,7 +104,11 @@
 							<label for="robotLength">Robot Length</label>
 						</div>
 						<div class="col s6 input-field">
-							<a class="btn waves-effect indigo" id="clearCache">Clear Cache</a>
+							<select id="driveTrain">
+								<option value="skid" selected>Tank Drive</option>
+								<option value="holonomic">Swerve Drive</option>
+							</select>
+							<label for="driveTrain">Drive Train</label>
 						</div>
 					</div>
 				</form>

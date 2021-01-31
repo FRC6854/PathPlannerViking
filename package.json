@@ -1,6 +1,6 @@
 {
   "name": "pathplanner",
-  "version": "1.6.1",
+  "version": "1.6.2",
   "description": "A simple yet powerful motion profile generator for FRC robots",
   "main": "main.js",
   "scripts": {
@@ -59,7 +59,7 @@
   "dependencies": {
     "electron-is": "^3.0.0",
     "electron-log": "^4.3.1",
-    "electron-store": "^7.0.0",
+    "electron-store": "^3.3.0",
     "electron-unhandled": "^3.0.2",
     "electron-updater": "^4.3.1",
     "hotkeys-js": "^3.7.6",

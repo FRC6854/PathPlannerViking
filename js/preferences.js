@@ -3,12 +3,20 @@ const home = require('os').homedir();
 const store = new Store({name: 'settings', cwd: home + '/.PathPlanner'});
 
 /**
+ * Unhandled Error
+TypeError: Use `delete()` to clear values
+    at ElectronStore.set (C:/Users/gkckt/AppData/Local/Programs/pathplanner/resources/app.asar/node_modules/conf/dist/source/index.js:155:19)
+    at Preferences.set lastGenerateDir [as lastGenerateDir] (C:/Users/gkckt/AppData/Local/Programs/pathplanner/resources/app.asar/js/preferences.js:112:9)
+    at EventEmitter.<anonymous> (file:///C:/Users/gkckt/AppData/Local/Programs/pathplanner/resources/app.asar/js/pathplanner.js:463:30)
+    at Object.onMessage (electron/js2c/renderer_init.js:115:818)
+ */
+
+/**
  * A class to store references to app and robot preferences.
  * When a preference is changed, the value is also updated in system storage.
  */
 class Preferences {
 	constructor() {
-		// this.p_mu = store.get('mu', 0.77);
 		this.p_wheelbaseWidth = store.get('wheelbaseWidth', 0.6);
 		this.p_robotLength = store.get('robotLength', 0.8);
 		this.p_timeStep = store.get('timeStep', 0.05);
@@ -23,6 +31,8 @@ class Preferences {
 		this.maxAcc = (this.p_useMetric) ? 1.5 : 5.0;
 		this.p_gameYear = store.get('gameYear', '20');
 		this.p_splitPath = store.get('splitPath', true);
+		this.p_driveTrain = store.get('driveTrain', 'skid');
+		this.p_outputRadians = store.get('outputRadians', false);
 		this.currentPathName = "path";
 		this.csvHeader = null;
 	}
@@ -79,6 +89,10 @@ class Preferences {
 		return this.p_splitPath;
 	}
 
+	get driveTrain() {
+		return this.p_driveTrain;
+	}
+
 	set lastRunVersion(value) {
 		store.set('version', value);
 	}
@@ -109,6 +123,7 @@ class Preferences {
 	}
 
 	set lastGenerateDir(value) {
+		console.log(value);
 		store.set('lastGenerateDir', value);
 		this.p_lastGenerateDir = value;
 	}
@@ -141,6 +156,11 @@ class Preferences {
 	set splitPath(value) {
 		store.set('splitPath', value);
 		this.p_splitPath = value;
+	}
+
+	set driveTrain(value) {
+		store.set('driveTrain', value);
+		this.p_driveTrain = value;
 	}
 
 	clearStore() {
