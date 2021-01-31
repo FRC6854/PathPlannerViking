@@ -26,7 +26,7 @@ function createWindow() {
 	win = new BrowserWindow({
 		width: 1200,
 		height: 745,
-		icon: 'build/icon.png',
+		icon: nativeImage.createFromPath('build/icon.png'),
 		frame: false,
 		resizable: false,
 		webPreferences: {
